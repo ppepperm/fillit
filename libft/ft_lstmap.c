@@ -15,7 +15,7 @@
 static void	ft_del(void *content, size_t content_size)
 {
 	free(content);
-	content_size = 0;
+	content_size = content_size - content_size;
 }
 
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))

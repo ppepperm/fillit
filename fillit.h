@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "get_next_line.h"
-#include <fcntl.h>
+#ifndef FILLIT_H
+#define FILLIT_H
 
-int main(int ac, char **av)
+typedef struct	s_tetrm
 {
-	if (ac)
-		if (av)
-			return 0;
+	void	*data;
+	size_t	*data_size;
+	char 	c;
+};
 
-	return (0);
-}
+#endif

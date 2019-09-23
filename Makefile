@@ -11,4 +11,14 @@
 # **************************************************************************** #
 
 NAME= fillit
+SRC= main.c get_next_line.c get_next_line.h -I . -L libft/ -lft
 
+all: $(NAME)
+
+$(NAME):
+	gcc -Wall -Wextra -Werror -o $(NAME) $(SRC)
+
+fclean:
+	rm -f $(NAME)
+
+re: fclean all
