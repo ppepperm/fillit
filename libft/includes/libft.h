@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {
@@ -84,5 +85,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_strrev(char *str);
 void				ft_lstpushback(t_list **head, t_list *node);
+int					get_next_line(const int fd, char **line);
 
 #endif

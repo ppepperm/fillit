@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "get_next_line.h"
 #include <fcntl.h>
 
 int main(int ac, char **av)
