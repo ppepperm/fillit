@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
-#define FILLIT_H
+# define FILLIT_H
+# include "libft.h"
 
 typedef struct	s_tetrm
 {
-	void	*data;
-	size_t	*data_size;
-	char 	c;
-};
+	int		*data;
+	char	c;
+	struct	s_tetrm *next;
+}				t_tet;
 
 #endif
