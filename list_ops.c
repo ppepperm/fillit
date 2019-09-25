@@ -16,7 +16,7 @@ t_tet	*tet_new(int *data, char c)
 {
 	t_tet	*tmp;
 
-	if(!(tmp = (t_tet*)malloc(sizeof(t_tet))))
+	if(!(tmp = (t_tet*)malloc(sizeof(t_tet))) || !data)
 		return (NULL);
 	tmp->data = data;
 	tmp->c = c;
@@ -39,10 +39,21 @@ void	tet_push_back(t_tet **head, t_tet *new)
 	}
 }
 
+void	free_tab(void **tab, size_t h)
+{
+	while (h)
+	{
+		free(tab[h - 1]);
+	}
+	free(tab);
+}
+
 void	tet_free(t_tet **begin_list)
 {
 	t_tet *buff;
 
+	if(!*begin_list)
+		return ;
 	buff = *begin_list;
 	while (buff)
 	{

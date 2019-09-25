@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME= fillit
-SRC= main.c  -I . -I libft/includes -L libft/ -lft
+SRC= main.c list_ops.c read_ops.c  -I . -I libft/includes -L libft/ -lft
 
 all: $(NAME)
 

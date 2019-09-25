@@ -11,13 +11,38 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "fillit.h"
+#include <stdio.h>
 #include <fcntl.h>
+
+void print_ban(int *ban)
+{
+	int bann = 0;
+	while (bann < 8)
+	{
+		printf("%d ",ban[bann]);
+		bann++;
+	}
+	printf("\n");
+
+}
 
 int main(int ac, char **av)
 {
-	if (ac)
-		if (av)
-			return 0;
+	int fd;
+	t_tet *tmp;
 
+	if (ac)
+	{
+		fd = open(av[1],O_RDWR);
+		tmp = read_file(fd);
+		while (tmp)
+		{
+			printf("%c ", tmp->c);
+			print_ban(tmp->data);
+			tmp = tmp->next;
+		}
+		return 0;
+	}
 	return (0);
 }
