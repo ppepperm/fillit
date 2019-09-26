@@ -44,6 +44,7 @@ void	free_tab(void **tab, size_t h)
 	while (h)
 	{
 		free(tab[h - 1]);
+		h--;
 	}
 	free(tab);
 }

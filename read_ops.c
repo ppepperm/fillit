@@ -39,7 +39,7 @@ int		*digitalize(char **tab)
 		}
 		dot.i++;
 	}
-	//free_tab((void*)tab, 4);
+	free_tab((void*)tab, 4);
 	return (data);
 }
 
