@@ -31,17 +31,20 @@ int main(int ac, char **av)
 {
 	int fd;
 	t_tet *tmp;
+	t_tet *freedom;
 
 	if (ac)
 	{
 		fd = open(av[1],O_RDWR);
 		tmp = read_file(fd);
+		freedom = tmp;
 		while (tmp)
 		{
 			printf("%c ", tmp->c);
 			print_ban(tmp->data);
 			tmp = tmp->next;
 		}
+		tet_free(&freedom);
 		return 0;
 	}
 	return (0);

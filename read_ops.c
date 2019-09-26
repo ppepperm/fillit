@@ -92,20 +92,21 @@ t_tet	*read_file(int fd)
 	{
 		if(!(node = tet_new(digitalize(tmp), 'A' + dot.i)))
 		{
-			//tet_free(&head);
+			tet_free(&head);
 			return (NULL);
 		}
 		tet_push_back(&head, node);
 		if (get_next_line(fd,&buff) == -1)
 		{
-			//tet_free(&head);
+			tet_free(&head);
 			return (NULL);
 		}
 		else if (ft_strlen(buff) > 0)
 		{
-			//tet_free(&head);
+			tet_free(&head);
 			return (NULL);
 		}
+		free(buff);
 		dot.i++;
 	}
 	return (head);
