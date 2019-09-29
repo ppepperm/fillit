@@ -154,5 +154,10 @@ t_tet	*read_file(int fd)
 		free(buff);
 		dot.i++;
 	}
+	if (dot.j < 0)
+	{
+		tet_free(&head);
+		return (NULL);
+	}
 	return (head);
 }
