@@ -54,4 +54,6 @@ void	free_tab(void **tab, size_t h);
 t_tet	*read_file(int fd);
 void print_ban(int *ban);
 
+int compare(int *a);
+
 #endif

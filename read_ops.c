@@ -134,6 +134,11 @@ t_tet	*read_file(int fd)
 			return (NULL);
 		}
 		tet_push_back(&head, node);
+		if(compare(node->data) == 0)
+		{
+			tet_free(&head);
+			return (NULL);
+		}
 		if (get_next_line(fd,&buff) == -1)
 		{
 			tet_free(&head);
