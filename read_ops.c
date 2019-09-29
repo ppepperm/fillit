@@ -67,11 +67,20 @@ int 	read_tet(int fd, char ***s)
 	{
 		ret = get_next_line(fd, &string);
 		if (ret == 0 && i == 0)
+		{
+			free_tab((void**)*s, i);
 			return (0);
+		}
 		if (ret <= 0 && i != 0)
+		{
+			free_tab((void**)*s, i);
 			return (-1);
+		}
 		if (ft_strlen(string) > 4 || test_for_symbols(string))
+		{
+			free_tab((void**)*s, i);
 			return (-1);
+		}
 		(*s)[i] = string;
 		i++;
 	}
