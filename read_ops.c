@@ -108,10 +108,8 @@ t_tet	*read_file(int fd)
 	head = NULL;
 	while (dot.i < 26 && (dot.j = read_tet(fd, &tmp)) > 0)
 	{
-		printf("Baaaaa\n");
 		if(!(node = tet_new(digitalize(tmp), 'A' + dot.i)))
 		{
-			printf("Aaaaaa\n");
 			tet_free(&head);
 			return (NULL);
 		}
