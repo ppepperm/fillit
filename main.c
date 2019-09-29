@@ -15,12 +15,12 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-void print_ban(long *ban)
+void print_ban(int *ban)
 {
 	int bann = 0;
 	while (bann < 8)
 	{
-		printf("%ld ",ban[bann]);
+		printf("%d ",ban[bann]);
 		bann++;
 	}
 	printf("\n");

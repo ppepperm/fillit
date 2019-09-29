@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-t_tet	*tet_new(long *data, char c)
+t_tet	*tet_new(int *data, char c)
 {
 	t_tet	*tmp;
 

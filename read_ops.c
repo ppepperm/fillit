@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fillit.h"
 #include "stdio.h"
-long		*digitalize(char **tab)
+
+int		*digitalize(char **tab)
 {
-	long *data;
+	int *data;
 	int k;
 	t_point dot;
 	t_point min;
@@ -26,7 +26,7 @@ long		*digitalize(char **tab)
 	min.j = 4;
 	k = 0;
 	error_count = 0;
-	if (!(data = (long*)malloc(sizeof(long) * 8)))
+	if (!(data = (int*)malloc(sizeof(int) * 8)))
 		return (NULL);
 	ft_bzero((void*)data, 8);
 	while (dot.i < 4)
