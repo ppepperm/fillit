@@ -17,10 +17,12 @@ long		*digitalize(char **tab)
 {
 	long *data;
 	int k;
-		t_point dot;
+	t_point dot;
+	int error_count;
 
 	dot.i = 0;
 	k = 0;
+	error_count = 0;
 	if (!(data = (long*)malloc(sizeof(long) * 8)))
 		return (NULL);
 	ft_bzero((void*)data, 8);
@@ -31,6 +33,13 @@ long		*digitalize(char **tab)
 		{
 			if (tab[dot.i][dot.j] == '#')
 			{
+				error_count++;
+				if (error_count > 4)
+				{
+					free(data);
+					free_tab((void**)tab, 4);
+					return (NULL);
+				}
 				data[k] = dot.i;
 				data[k + 1] = dot.j;
 				k += 2;
@@ -78,7 +87,7 @@ int 	read_tet(int fd, char ***s)
 		}
 		if (ft_strlen(string) > 4 || test_for_symbols(string))
 		{
-			free_tab((void**)*s, i);
+			free_tab((void**)*s, i + 1);
 			return (-1);
 		}
 		(*s)[i] = string;
@@ -99,8 +108,10 @@ t_tet	*read_file(int fd)
 	head = NULL;
 	while (dot.i < 26 && (dot.j = read_tet(fd, &tmp)) > 0)
 	{
+		printf("Baaaaa\n");
 		if(!(node = tet_new(digitalize(tmp), 'A' + dot.i)))
 		{
+			printf("Aaaaaa\n");
 			tet_free(&head);
 			return (NULL);
 		}

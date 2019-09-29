@@ -17,7 +17,11 @@ t_tet	*tet_new(long *data, char c)
 	t_tet	*tmp;
 
 	if(!(tmp = (t_tet*)malloc(sizeof(t_tet))) || !data)
+	{
+		if (tmp)
+			free(tmp);
 		return (NULL);
+	}
 	tmp->data = data;
 	tmp->c = c;
 	tmp->next = NULL;
