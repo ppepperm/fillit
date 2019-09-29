@@ -198,7 +198,7 @@ ft_strtrim.o: ft_strtrim.c
 ft_tolower.o: ft_tolower.c
 	 gcc -c -Wall -Werror -Wextra ft_tolower.c -I $(HEADERS)
 
-ft_toupper.o: ft_toupper.c 
+ft_toupper.o: ft_toupper.c
 	 gcc -c -Wall -Werror -Wextra ft_toupper.c -I $(HEADERS)
 
 clean:
