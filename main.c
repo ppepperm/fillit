@@ -44,6 +44,10 @@ int main(int ac, char **av)
 			print_ban(tmp->data);
 			tmp = tmp->next;
 		}
+		if (!tmp)
+		{
+			printf("Error\n");
+		}
 		tet_free(&freedom);
 	}
 	return (0);

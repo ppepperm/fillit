@@ -18,9 +18,12 @@ long		*digitalize(char **tab)
 	long *data;
 	int k;
 	t_point dot;
+	t_point min;
 	int error_count;
 
 	dot.i = 0;
+	min.i = 4;
+	min.j = 4;
 	k = 0;
 	error_count = 0;
 	if (!(data = (long*)malloc(sizeof(long) * 8)))
@@ -40,13 +43,30 @@ long		*digitalize(char **tab)
 					free_tab((void**)tab, 4);
 					return (NULL);
 				}
-				data[k] = dot.i;
-				data[k + 1] = dot.j;
+				if (dot.i < min.i)
+					min.i = dot.i;
+				if (dot.j < min.j)
+					min.j= dot.j;
+				data[k] = dot.j;
+				data[k + 1] = dot.i;
 				k += 2;
 			}
 			dot.j++;
 		}
 		dot.i++;
+	}
+	k = 0;
+	if (error_count != 4)
+	{
+		free(data);
+		free_tab((void**)tab, 4);
+		return (NULL);
+	}
+	while (k < 8)
+	{
+		data[k] -= min.j;
+		data[k + 1] -= min.i;
+		k += 2;
 	}
 	free_tab((void**)tab, 4);
 	return (data);
