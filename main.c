@@ -38,15 +38,15 @@ int main(int ac, char **av)
 		fd = open(av[1],O_RDWR);
 		tmp = read_file(fd);
 		freedom = tmp;
+		if (!tmp)
+		{
+			printf("Error\n");
+		}
 		while (tmp)
 		{
 			printf("%c ", tmp->c);
 			print_ban(tmp->data);
 			tmp = tmp->next;
-		}
-		if (!tmp)
-		{
-			printf("Error\n");
 		}
 		tet_free(&freedom);
 	}
