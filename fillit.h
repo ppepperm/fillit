@@ -16,7 +16,7 @@
 
 typedef struct	s_tetrm
 {
-	int		*data;
+	long		*data;
 	char	c;
 	struct	s_tetrm *next;
 }				t_tet;
@@ -27,12 +27,12 @@ typedef struct 	s_point
 	int j;
 }				t_point;
 
-t_tet	*tet_new(int *data, char c);
+t_tet	*tet_new(long *data, char c);
 void	tet_push_back(t_tet **head, t_tet *new);
 void	tet_free(t_tet **begin_list);
 void	free_tab(void **tab, size_t h);
 
 t_tet	*read_file(int fd);
-void print_ban(int *ban);
+void print_ban(long *ban);
 
 #endif

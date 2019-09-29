@@ -13,15 +13,15 @@
 
 #include "fillit.h"
 #include "stdio.h"
-int		*digitalize(char **tab)
+long		*digitalize(char **tab)
 {
-	int *data;
+	long *data;
 	int k;
 		t_point dot;
 
 	dot.i = 0;
 	k = 0;
-	if (!(data = (int*)malloc(sizeof(int) * 8)))
+	if (!(data = (long*)malloc(sizeof(long) * 8)))
 		return (NULL);
 	ft_bzero((void*)data, 8);
 	while (dot.i < 4)
@@ -39,7 +39,7 @@ int		*digitalize(char **tab)
 		}
 		dot.i++;
 	}
-	free_tab((void*)tab, 4);
+	free_tab((void**)tab, 4);
 	return (data);
 }
 
@@ -99,11 +99,13 @@ t_tet	*read_file(int fd)
 		if (get_next_line(fd,&buff) == -1)
 		{
 			tet_free(&head);
+			free(buff);
 			return (NULL);
 		}
 		else if (ft_strlen(buff) > 0)
 		{
 			tet_free(&head);
+			free(buff);
 			return (NULL);
 		}
 		free(buff);

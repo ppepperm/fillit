@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-t_tet	*tet_new(int *data, char c)
+t_tet	*tet_new(long *data, char c)
 {
 	t_tet	*tmp;
 
@@ -41,10 +41,13 @@ void	tet_push_back(t_tet **head, t_tet *new)
 
 void	free_tab(void **tab, size_t h)
 {
-	while (h)
+	size_t i;
+
+	i = 0;
+	while (i < h)
 	{
-		free(tab[h - 1]);
-		h--;
+		free(tab[i]);
+		i++;
 	}
 	free(tab);
 }

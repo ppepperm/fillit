@@ -15,12 +15,12 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-void print_ban(int *ban)
+void print_ban(long *ban)
 {
 	int bann = 0;
 	while (bann < 8)
 	{
-		printf("%d ",ban[bann]);
+		printf("%ld ",ban[bann]);
 		bann++;
 	}
 	printf("\n");
@@ -45,7 +45,6 @@ int main(int ac, char **av)
 			tmp = tmp->next;
 		}
 		tet_free(&freedom);
-		return 0;
 	}
 	return (0);
 }
