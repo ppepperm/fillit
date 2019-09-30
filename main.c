@@ -27,6 +27,13 @@ void print_ban(int *ban)
 
 }
 
+int		solve (t_tet *head, t_tab *grid, t_tet *node)
+{
+	t_point pos;
+
+
+}
+
 int main(int ac, char **av)
 {
 	int fd;

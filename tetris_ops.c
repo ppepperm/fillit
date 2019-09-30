@@ -28,12 +28,28 @@ int		check_place(t_tab *grid, t_point pos, int *data)
 	return (ret);
 }
 
-void	plase_tet(t_tab *grid, t_point pos, t_tet *tet)
+void	place_tet(t_tab *grid, t_point pos, t_tet *tet)
 {
 	grid->grid[pos.i + tet->data[1]][pos.j + tet->data[0]] = tet->c;
 	grid->grid[pos.i + tet->data[3]][pos.j + tet->data[2]] = tet->c;
 	grid->grid[pos.i + tet->data[5]][pos.j + tet->data[3]] = tet->c;
 	grid->grid[pos.i + tet->data[7]][pos.j + tet->data[4]] = tet->c;
+}
+
+int  find_place(t_tab *grid, t_tet *node, t_point *point)
+{
+	while(point->i < grid->size)
+	{
+		while (point->j < grid->size)
+		{
+			if (check_place(grid, point, node->data))
+				return (1);
+			point->j++;
+		}
+		point->j = 0;
+		point->i++;
+	}
+	return (0);
 }
 
 

@@ -36,7 +36,7 @@
 typedef struct	s_tab
 {
 	char	**grid;
-	size_t	size;
+	int		size;
 }				t_tab;
 
 typedef struct	s_tetrm
@@ -66,6 +66,8 @@ t_tab	*new_tab(size_t size);
 void	t_tab_free(t_tab *tab);
 void	resize_tab(t_tab **tab, size_t new_size);
 void	print_tab(t_tab *tab);
+
 int		check_place(t_tab *grid, t_point pos, int *data);
+void	place_tet(t_tab *grid, t_point pos, t_tet *tet);
 
 #endif
