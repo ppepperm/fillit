@@ -62,4 +62,8 @@ void print_ban(int *ban);
 
 int compare(int *a);
 
+t_tab	*new_tab(size_t size);
+void	t_tab_free(t_tab *tab);
+void	resize_tab(t_tab **tab, size_t new_size);
+
 #endif

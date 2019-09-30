@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "stdio.h"
 
-int		*digitalize(char **tab)
+static int		*digitalize(char **tab)
 {
 	int *data;
 	int k;
@@ -72,7 +71,7 @@ int		*digitalize(char **tab)
 	return (data);
 }
 
-int		test_for_symbols(char *str)
+static int		test_for_symbols(char *str)
 {
 	while(*str)
 	{
