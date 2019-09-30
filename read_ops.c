@@ -102,12 +102,14 @@ int 	read_tet(int fd, char ***s)
 		}
 		if (ret <= 0 && i != 0)
 		{
+			free(string);
 			free_tab((void**)*s, i);
 			return (-1);
 		}
 		if (ft_strlen(string) > 4 || test_for_symbols(string))
 		{
-			free_tab((void**)*s, i + 1);
+			free(string);
+			free_tab((void**)*s, i);
 			return (-1);
 		}
 		(*s)[i] = string;
@@ -154,8 +156,9 @@ t_tet	*read_file(int fd)
 		free(buff);
 		dot.i++;
 	}
-	if (dot.j < 0)
+	if (dot.j < 0 || get_next_line(fd,&buff) != 0)
 	{
+		free(buff);
 		tet_free(&head);
 		return (NULL);
 	}

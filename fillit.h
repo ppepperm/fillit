@@ -33,6 +33,12 @@
 # define ZR_PIECE (int [8]) {1,0,0,1,1,1,0,2}
 # include "libft.h"
 
+typedef struct	s_tab
+{
+	char	**plane;
+	size_t	size;
+}				t_tab;
+
 typedef struct	s_tetrm
 {
 	int		*data;

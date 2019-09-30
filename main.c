@@ -6,7 +6,7 @@
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:14:09 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/18 17:36:36 by ppepperm         ###   ########.fr       */
+/*   Updated: 2019/09/29 18:20:45 by snorcros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,13 @@ int main(int ac, char **av)
 	t_tet *tmp;
 	t_tet *freedom;
 
-	if (ac)
+	if (ac > 1)
 	{
 		fd = open(av[1],O_RDWR);
 		tmp = read_file(fd);
 		freedom = tmp;
 		if (!tmp)
-		{
-			printf("Error\n");
-		}
+			ft_putstr("Error\n");
 		while (tmp)
 		{
 			printf("%c ", tmp->c);
@@ -50,5 +48,8 @@ int main(int ac, char **av)
 		}
 		tet_free(&freedom);
 	}
+	else
+		ft_putstr("Error\n");
+
 	return (0);
 }
