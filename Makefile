@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME= fillit
-SRC := main.c list_ops.c read_ops.c copmare.c
+SRC := main.c list_ops.c read_ops.c copmare.c tab_ops.c tetris_ops.c
 OBJ := $(patsubst %.c, %.o, $(SRC))
 
 LIB_FLAG := -L libft/ -lft

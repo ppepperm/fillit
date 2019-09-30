@@ -35,7 +35,7 @@
 
 typedef struct	s_tab
 {
-	char	**plane;
+	char	**grid;
 	size_t	size;
 }				t_tab;
 
@@ -65,5 +65,7 @@ int compare(int *a);
 t_tab	*new_tab(size_t size);
 void	t_tab_free(t_tab *tab);
 void	resize_tab(t_tab **tab, size_t new_size);
+void	print_tab(t_tab *tab);
+int		check_place(t_tab *grid, t_point pos, int *data);
 
 #endif

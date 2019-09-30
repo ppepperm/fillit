@@ -38,8 +38,8 @@ t_tab	*new_tab(size_t size)
 		plane[i][size] = 0;
 		i++;
 	}
-	tmp->plane = plane;
-	tmp->size = size;s
+	tmp->grid = plane;
+	tmp->size = size;
 	return (tmp);
 }
 
@@ -47,7 +47,7 @@ void	t_tab_free(t_tab *tab)
 {
 	if (!tab)
 		return ;
-	free_tab((void**)tab->plane, tab->size);
+	free_tab((void**)tab->grid, tab->size);
 	free(tab);
 }
 
@@ -55,4 +55,16 @@ void	resize_tab(t_tab **tab, size_t new_size)
 {
 	t_tab_free(*tab);
 	*tab = new_tab(new_size);
+}
+
+void	print_tab(t_tab *tab)
+{
+	int i;
+
+	i = 0;
+	while (i < tab->size)
+	{
+		ft_putendl(tab->grid[i]);
+		i++;
+	}
 }
