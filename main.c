@@ -27,7 +27,7 @@ void print_ban(int *ban)
 
 }
 
-int		solve (t_tab *grid, t_tet *node,t_point *pos)
+int		solve (t_tet *head, t_tab *grid, t_tet *node,t_point *pos)
 {
 	int i;
 	print_tab(grid);
@@ -39,18 +39,20 @@ int		solve (t_tab *grid, t_tet *node,t_point *pos)
 	{
 		place_tet(grid, *pos, node);
 		printf("PASS %c\n",node->c);
-		if (!(i = solve(grid, node->next, pos)))
+		if (!(i = solve(head, grid, node->next, pos)))
 		{
-			printf("%d , %c\n", i, node->c);
+			printf("REPLACE %c\n",node->c);
 			remove_tet(grid, *pos, node);
+			printf("REPLACED %c\n",node->c);
 			pos->i += 1;
 			pos->j += 1;
-			if (pos->i >= grid->size || pos->j >= grid->size || !solve(grid, node, pos))
+			if (!solve(head, grid, node, pos))
 			{
 				pos->i = 0;
 				pos->j = 0;
 				resize_tab(&grid, grid->size + 1);
-				return (solve(grid, node, pos));
+				printf("RESIZED %c\n",node->c);
+				return (solve(head, grid, head, pos));
 			}
 		}
 		return (1);
@@ -81,7 +83,7 @@ int main(int ac, char **av)
 			print_ban(tmp->data);
 			tmp = tmp->next;
 		}
-		solve(grid, freedom, &ban);
+		solve(freedom, grid, freedom, &ban);
 		t_tab_free(grid);
 		tet_free(&freedom);
 	}
