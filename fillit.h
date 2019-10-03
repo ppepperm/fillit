@@ -67,7 +67,9 @@ void	t_tab_free(t_tab *tab);
 void	resize_tab(t_tab **tab, size_t new_size);
 void	print_tab(t_tab *tab);
 
-int		check_place(t_tab *grid, t_point pos, int *data);
+int		check_place(t_tab *grid, t_point pos, t_tet *node);
 void	place_tet(t_tab *grid, t_point pos, t_tet *tet);
+int		find_place(t_tab *grid, t_tet *node, t_point *point);
+void	remove_tet(t_tab *grid, t_point pos, t_tet *tet);
 
 #endif

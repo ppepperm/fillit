@@ -27,24 +27,52 @@ void print_ban(int *ban)
 
 }
 
-int		solve (t_tet *head, t_tab *grid, t_tet *node)
+int		solve (t_tab *grid, t_tet *node,t_point *pos)
 {
-	t_point pos;
-
-
+	int i;
+	print_tab(grid);
+	if (node == NULL)
+		return (1);
+	else if (!find_place(grid, node, pos))
+		return (0);
+	else
+	{
+		place_tet(grid, *pos, node);
+		printf("PASS %c\n",node->c);
+		if (!(i = solve(grid, node->next, pos)))
+		{
+			printf("%d , %c\n", i, node->c);
+			remove_tet(grid, *pos, node);
+			pos->i += 1;
+			pos->j += 1;
+			if (pos->i >= grid->size || pos->j >= grid->size || !solve(grid, node, pos))
+			{
+				pos->i = 0;
+				pos->j = 0;
+				resize_tab(&grid, grid->size + 1);
+				return (solve(grid, node, pos));
+			}
+		}
+		return (1);
+	}
 }
 
 int main(int ac, char **av)
 {
 	int fd;
+	t_tab *grid;
 	t_tet *tmp;
 	t_tet *freedom;
+	t_point ban;
 
 	if (ac > 1)
 	{
 		fd = open(av[1],O_RDWR);
 		tmp = read_file(fd);
 		freedom = tmp;
+		ban.j = 0;
+		ban.i = 0;
+		grid = new_tab(4);
 		if (!tmp)
 			ft_putstr("Error\n");
 		while (tmp)
@@ -53,6 +81,8 @@ int main(int ac, char **av)
 			print_ban(tmp->data);
 			tmp = tmp->next;
 		}
+		solve(grid, freedom, &ban);
+		t_tab_free(grid);
 		tet_free(&freedom);
 	}
 	else

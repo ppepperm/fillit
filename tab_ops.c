@@ -20,7 +20,7 @@ t_tab	*new_tab(size_t size)
 
 	if(!(tmp = (t_tab*)malloc(sizeof(t_tab))))
 		return (NULL);
-	if(!(plane = (char**)malloc(sizeof(char) * size)))
+	if(!(plane = (char**)malloc(sizeof(char*) * size)))
 	{
 		free(tmp);
 		return (NULL);
@@ -34,7 +34,7 @@ t_tab	*new_tab(size_t size)
 			free(tmp);
 			return (NULL);
 		}
-		ft_memset((void*)plane[i], '.', size - 1);
+		ft_memset((void*)plane[i], '.', size);
 		plane[i][size] = 0;
 		i++;
 	}
