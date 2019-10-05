@@ -44,6 +44,8 @@ void	place_tet(t_tab *grid, t_point pos, t_tet *tet)
 	grid->grid[pos.i + tet->data[3]][pos.j + tet->data[2]] = tet->c;
 	grid->grid[pos.i + tet->data[5]][pos.j + tet->data[4]] = tet->c;
 	grid->grid[pos.i + tet->data[7]][pos.j + tet->data[6]] = tet->c;
+	tet->pos.i = pos.i;
+	tet->pos.j = pos.j;
 }
 
 int  find_place(t_tab *grid, t_tet *node, t_point *point)
@@ -71,7 +73,6 @@ int  find_place(t_tab *grid, t_tet *node, t_point *point)
 
 void	remove_tet(t_tab *grid, t_point pos, t_tet *tet)
 {
-	printf("%d %d\n", pos.i, pos.j);
 	grid->grid[pos.i + tet->data[1]][pos.j + tet->data[0]] = '.';
 	grid->grid[pos.i + tet->data[3]][pos.j + tet->data[2]] = '.';
 	grid->grid[pos.i + tet->data[5]][pos.j + tet->data[4]] = '.';

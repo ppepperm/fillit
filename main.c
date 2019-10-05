@@ -29,29 +29,29 @@ void print_ban(int *ban)
 
 int		solve (t_tet *head, t_tab *grid, t_tet *node,t_point *pos)
 {
-	int i;
-	print_tab(grid);
 	if (node == NULL)
 		return (1);
 	else if (!find_place(grid, node, pos))
+	{
+		printf("CANT_PLACE %c\n", node->c);
 		return (0);
+	}
 	else
 	{
 		place_tet(grid, *pos, node);
+		print_tab(grid);
 		printf("PASS %c\n",node->c);
-		if (!(i = solve(head, grid, node->next, pos)))
+		if (!solve(head, grid, node->next, pos))
 		{
-			printf("REPLACE %c\n",node->c);
 			remove_tet(grid, *pos, node);
-			printf("REPLACED %c\n",node->c);
-			pos->i += 1;
-			pos->j += 1;
+			printf("REMOVED");
+			next_dot(pos, grid);
 			if (!solve(head, grid, node, pos))
 			{
 				pos->i = 0;
 				pos->j = 0;
 				resize_tab(&grid, grid->size + 1);
-				printf("RESIZED %c\n",node->c);
+				printf("RESIZED_GRID_AT %c\n",node->c);
 				return (solve(head, grid, head, pos));
 			}
 		}

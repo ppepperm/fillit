@@ -52,3 +52,14 @@ int compare(int *a)
 	ret = ret || compare_two(a, ZR_PIECE);
 	return(ret);
 }
+
+void	next_dot(t_point *dot, t_tab *grid)
+{
+	if (dot->j + 1 == grid->size)
+	{
+		dot->j = 0;
+		dot->i++;
+	}
+	else
+		dot->j++;
+}

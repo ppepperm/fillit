@@ -39,18 +39,20 @@ typedef struct	s_tab
 	int		size;
 }				t_tab;
 
-typedef struct	s_tetrm
-{
-	int		*data;
-	char	c;
-	struct	s_tetrm *next;
-}				t_tet;
-
 typedef struct 	s_point
 {
 	int	i;
 	int j;
 }				t_point;
+
+typedef struct	s_tetrm
+{
+	int		*data;
+	char	c;
+	t_point	pos;
+	struct	s_tetrm *next;
+	struct  s_tetrm *prev;
+}				t_tet;
 
 t_tet	*tet_new(int *data, char c);
 void	tet_push_back(t_tet **head, t_tet *new);
@@ -61,6 +63,7 @@ t_tet	*read_file(int fd);
 void print_ban(int *ban);
 
 int compare(int *a);
+void	next_dot(t_point *dot, t_tab *grid);
 
 t_tab	*new_tab(size_t size);
 void	t_tab_free(t_tab *tab);
