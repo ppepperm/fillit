@@ -6,7 +6,7 @@
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 16:56:59 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/30 16:57:03 by ppepperm         ###   ########.fr       */
+/*   Updated: 2019/10/06 16:41:13 by snorcros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_tab	*new_tab(size_t size)
 	char	**plane;
 	size_t	i;
 
-	if(!(tmp = (t_tab*)malloc(sizeof(t_tab))))
+	if (!(tmp = (t_tab*)malloc(sizeof(t_tab))))
 		return (NULL);
-	if(!(plane = (char**)malloc(sizeof(char*) * size)))
+	if (!(plane = (char**)malloc(sizeof(char*) * size)))
 	{
 		free(tmp);
 		return (NULL);
@@ -28,7 +28,7 @@ t_tab	*new_tab(size_t size)
 	i = 0;
 	while (i < size)
 	{
-		if(!(plane[i] = (char*)malloc(sizeof(char) * (size + 1))))
+		if (!(plane[i] = (char*)malloc(sizeof(char) * (size + 1))))
 		{
 			free_tab((void**)plane, i);
 			free(tmp);

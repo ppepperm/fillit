@@ -6,12 +6,12 @@
 #    By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 14:54:25 by ppepperm          #+#    #+#              #
-#    Updated: 2019/09/29 16:45:34 by snorcros         ###   ########.fr        #
+#    Updated: 2019/10/06 13:28:14 by snorcros         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= fillit
-SRC := main.c list_ops.c read_ops.c copmare.c tab_ops.c tetris_ops.c
+SRC := main.c list_ops.c read_ops.c copmare.c tab_ops.c tetris_ops.c print.c
 OBJ := $(patsubst %.c, %.o, $(SRC))
 
 LIB_FLAG := -L libft/ -lft
@@ -28,12 +28,12 @@ $(NAME): $(OBJ)
 		@echo "DONE"
 
 clean:
-		rm -f $(OBJ)
-		make -C libft clean
+		@rm -f $(OBJ)
+		@make -C libft clean
 
 fclean: clean
-		rm -f $(NAME)
-		make -C libft fclean
+		@rm -f $(NAME)
+		@make -C libft fclean
 
 re: fclean $(NAME)
 

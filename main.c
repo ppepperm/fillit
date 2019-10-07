@@ -6,7 +6,7 @@
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:14:09 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/29 18:20:45 by snorcros         ###   ########.fr       */
+/*   Updated: 2019/10/07 17:05:22 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-void print_ban(int *ban)
+void	print_ban(int *ban)
 {
 	int bann = 0;
+
 	while (bann < 8)
 	{
-		printf("%d ",ban[bann]);
+		printf("%d ", ban[bann]);
 		bann++;
 	}
 	printf("\n");
-
 }
 
-int		solve (t_tet *head, t_tab *grid, t_tet *node,t_point *pos)
+int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point *pos)
 {
 	if (node == NULL)
 		return (1);
@@ -39,8 +39,9 @@ int		solve (t_tet *head, t_tab *grid, t_tet *node,t_point *pos)
 	else
 	{
 		place_tet(grid, *pos, node);
-		print_tab(grid);
-		printf("PASS %c\n",node->c);
+		//print_tab(grid);
+		print_tabl(grid);
+		printf("PASS %c\n", node->c);
 		if (!solve(head, grid, node->next, pos))
 		{
 			remove_tet(grid, *pos, node);
@@ -51,7 +52,7 @@ int		solve (t_tet *head, t_tab *grid, t_tet *node,t_point *pos)
 				pos->i = 0;
 				pos->j = 0;
 				resize_tab(&grid, grid->size + 1);
-				printf("RESIZED_GRID_AT %c\n",node->c);
+				printf("RESIZED_GRID_AT %c\n", node->c);
 				return (solve(head, grid, head, pos));
 			}
 		}
@@ -59,17 +60,17 @@ int		solve (t_tet *head, t_tab *grid, t_tet *node,t_point *pos)
 	}
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	int fd;
-	t_tab *grid;
-	t_tet *tmp;
-	t_tet *freedom;
-	t_point ban;
+	int		fd;
+	t_tab	*grid;
+	t_tet	*tmp;
+	t_tet	*freedom;
+	t_point	ban;
 
 	if (ac > 1)
 	{
-		fd = open(av[1],O_RDWR);
+		fd = open(av[1], O_RDWR);
 		tmp = read_file(fd);
 		freedom = tmp;
 		ban.j = 0;
@@ -89,6 +90,5 @@ int main(int ac, char **av)
 	}
 	else
 		ft_putstr("Error\n");
-
 	return (0);
 }

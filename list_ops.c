@@ -6,7 +6,7 @@
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 16:24:02 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/24 16:24:07 by ppepperm         ###   ########.fr       */
+/*   Updated: 2019/09/29 18:23:11 by snorcros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_tet	*tet_new(int *data, char c)
 {
 	t_tet	*tmp;
 
-	if(!(tmp = (t_tet*)malloc(sizeof(t_tet))) || !data)
+	if (!(tmp = (t_tet*)malloc(sizeof(t_tet))) || !data)
 	{
 		if (tmp)
 			free(tmp);
@@ -25,7 +25,6 @@ t_tet	*tet_new(int *data, char c)
 	tmp->data = data;
 	tmp->c = c;
 	tmp->next = NULL;
-	tmp->prev = NULL;
 	return (tmp);
 }
 
@@ -41,7 +40,6 @@ void	tet_push_back(t_tet **head, t_tet *new)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
-		new->prev = tmp;
 	}
 }
 
@@ -62,7 +60,7 @@ void	tet_free(t_tet **begin_list)
 {
 	t_tet *buff;
 
-	if(!*begin_list)
+	if (!*begin_list)
 		return ;
 	buff = *begin_list;
 	while (buff)

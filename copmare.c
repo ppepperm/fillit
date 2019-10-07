@@ -6,13 +6,13 @@
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 16:59:05 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/29 16:59:07 by ppepperm         ###   ########.fr       */
+/*   Updated: 2019/10/06 16:10:46 by snorcros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int compare_two(int *a, int *b)
+int		compare_two(int *a, int *b)
 {
 	int i;
 
@@ -26,7 +26,7 @@ int compare_two(int *a, int *b)
 	return (1);
 }
 
-int compare(int *a)
+int		compare(int *a)
 {
 	int ret;
 
@@ -50,7 +50,7 @@ int compare(int *a)
 	ret = ret || compare_two(a, SR_PIECE);
 	ret = ret || compare_two(a, Z_PIECE);
 	ret = ret || compare_two(a, ZR_PIECE);
-	return(ret);
+	return (ret);
 }
 
 void	next_dot(t_point *dot, t_tab *grid)

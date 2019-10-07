@@ -6,7 +6,7 @@
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 16:48:45 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/30 16:48:46 by ppepperm         ###   ########.fr       */
+/*   Updated: 2019/10/06 16:32:38 by snorcros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	place_tet(t_tab *grid, t_point pos, t_tet *tet)
 	tet->pos.j = pos.j;
 }
 
-int  find_place(t_tab *grid, t_tet *node, t_point *point)
+int		find_place(t_tab *grid, t_tet *node, t_point *point)
 {
-	printf("FIND %c\n",node->c);
 	t_point save;
-
+	printf("FIND %c\n", node->c);
+	
 	save.i = point->i;
 	save.j = point->j;
-	while(point->i < grid->size)
+	while (point->i < grid->size)
 	{
 		while (point->j < grid->size)
 		{
