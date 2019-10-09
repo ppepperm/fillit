@@ -60,7 +60,7 @@ int		find_place(t_tab *grid, t_tet *node, t_point *point)
 		while (point->j < grid->size)
 		{
 			if (check_place(grid, *point, node)) {
-				printf("%d %d %c\n", point->i, point->j, node->c);
+				printf("FOUND %d %d %c\n", point->i, point->j, node->c);
 				return (1);
 			}
 			point->j++;
@@ -81,6 +81,6 @@ void	remove_tet(t_tab *grid, t_point pos, t_tet *tet)
 	grid->grid[pos.i + tet->data[3]][pos.j + tet->data[2]] = '.';
 	grid->grid[pos.i + tet->data[5]][pos.j + tet->data[4]] = '.';
 	grid->grid[pos.i + tet->data[7]][pos.j + tet->data[6]] = '.';
-	tet->pos.i = 0:git;
+	tet->pos.i = 0;
 	tet->pos.j = 0;
 }
