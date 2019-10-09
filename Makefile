@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@make -C libft
-		@gcc -o $(NAME) -Wall -Wextra -Werror  $(LIB_FLAG) $(OBJ)
+		@gcc -o $(NAME) -Wall -Wextra -Werror $(OBJ) $(LIB_FLAG)
 		@echo "DONE"
 
 clean:

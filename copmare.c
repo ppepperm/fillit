@@ -63,3 +63,21 @@ void	next_dot(t_point *dot, t_tab *grid)
 	else
 		dot->j++;
 }
+
+void find_dot(t_tab *grid, t_point *pos) {
+	t_point tmp;
+
+	tmp.i = 0;
+	while (tmp.i < grid->size) {
+		tmp.j = 0;
+		while (tmp.j < grid->size) {
+			if (grid->grid[tmp.i][tmp.j] == '.') {
+				pos->i = tmp.i;
+				pos->j = tmp.j;
+				return;
+			}
+			tmp.j++;
+		}
+		tmp.i++;
+	}
+}

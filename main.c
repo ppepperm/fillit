@@ -38,7 +38,14 @@ int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point pos)
 	else
 	{
 		place_tet(grid, pos, node);
-		print_tab(grid);
+		print_tabl(grid);
+		print_tabl(grid);
+		print_tabl(grid);
+		print_tabl(grid);
+		print_tabl(grid);
+		print_tabl(grid);
+		print_tabl(grid);
+		print_tabl(grid);
 		if (!solve(head, grid, node->next, pos))
 		{
 			remove_tet(grid, pos, node);
@@ -85,7 +92,7 @@ int		main(int ac, char **av)
 			tmp = tmp->next;
 		}
 		solve(freedom, grid, freedom, ban);
-		t_tab_free(grid);
+		//t_tab_free(grid);
 		tet_free(&freedom);
 	}
 	else
