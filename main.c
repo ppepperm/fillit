@@ -27,30 +27,30 @@ void	print_ban(int *ban)
 	printf("\n");
 }
 
-int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point *pos)
+int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point pos)
 {
 	if (node == NULL)
 		return (1);
-	else if (!find_place(grid, node, pos))
+	else if (!find_place(grid, node, &pos))
 	{
 		return (0);
 	}
 	else
 	{
-		place_tet(grid, *pos, node);
+		place_tet(grid, pos, node);
 		print_tab(grid);
 		if (!solve(head, grid, node->next, pos))
 		{
-			remove_tet(grid, *pos, node);
-			next_dot(pos, grid);
+			remove_tet(grid, pos, node);
+			next_dot(&pos, grid);
 			if (!solve(head, grid, node, pos))
 			{
 				remove_tet(grid, node->prev->pos, node->prev);
 				next_dot(&(node->prev->pos), grid);
-				if (!solve(head, grid, node->prev, &(node->prev->pos))) {
+				if (!solve(head, grid, node->prev, node->prev->pos)) {
 					//print_tabl(grid);
-					pos->i = 0;
-					pos->j = 0;
+					pos.i = 0;
+					pos.j = 0;
 					resize_tab(&grid, grid->size + 1);
 					return (solve(head, grid, head, pos));
 				}
@@ -84,7 +84,7 @@ int		main(int ac, char **av)
 			print_ban(tmp->data);
 			tmp = tmp->next;
 		}
-		solve(freedom, grid, freedom, &ban);
+		solve(freedom, grid, freedom, ban);
 		t_tab_free(grid);
 		tet_free(&freedom);
 	}
