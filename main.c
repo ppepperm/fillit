@@ -33,33 +33,25 @@ int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point *pos)
 		return (1);
 	else if (!find_place(grid, node, pos))
 	{
-		printf("CANT_PLACE %c\n", node->c);
 		return (0);
 	}
 	else
 	{
 		place_tet(grid, *pos, node);
-		printf("PASS %c\n", node->c);
-		printf("%d %d %c\n", node->pos.i, node->pos.j, node->c);
 		print_tab(grid);
 		if (!solve(head, grid, node->next, pos))
 		{
 			remove_tet(grid, *pos, node);
-			//printf("REMOVED\n");
 			next_dot(pos, grid);
 			if (!solve(head, grid, node, pos))
 			{
-				printf("%d %d %c\n", node->prev->pos.i, node->prev->pos.j, node->prev->c);
 				remove_tet(grid, node->prev->pos, node->prev);
-				ft_putendl("REMOVED_PREV");
 				next_dot(&(node->prev->pos), grid);
-				printf("%d %d %c\n", node->prev->pos.i, node->prev->pos.j, node->prev->c);
 				if (!solve(head, grid, node->prev, &(node->prev->pos))) {
 					//print_tabl(grid);
 					pos->i = 0;
 					pos->j = 0;
 					resize_tab(&grid, grid->size + 1);
-					printf("RESIZED_GRID_AT %c\n", node->c);
 					return (solve(head, grid, head, pos));
 				}
 			}
