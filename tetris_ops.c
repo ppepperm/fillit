@@ -35,6 +35,10 @@ int		check_place(t_tab *grid, t_point pos, t_tet *node)
 		return (0);
 	else if (grid->grid[pos.i + data[7]][pos.j + data[6]] != '.')
 		return (0);
+	//printf("%d %d\n",pos.i + data[1], pos.j + data[0]);
+	//printf("%d %d\n",pos.i + data[3], pos.j + data[2]);
+	//printf("%d %d\n",pos.i + data[5], pos.j + data[4]);
+	//printf("%d %d\n",pos.i + data[7], pos.j + data[6]);
 	return (1);
 }
 

@@ -64,6 +64,18 @@ void	next_dot(t_point *dot, t_tab *grid)
 		dot->j++;
 }
 
+void	prev_dot(t_point *dot, t_tab *grid)
+{
+	if (dot->j - 1 < 0)
+	{
+		dot->j = 0;
+		if (dot->i != 0)
+			dot->i--;
+	}
+	else
+		dot->j--;
+}
+
 void find_dot(t_tab *grid, t_point *pos) {
 	t_point tmp;
 

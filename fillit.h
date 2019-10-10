@@ -68,6 +68,7 @@ void				print_ban(int *ban);
 int					compare(int *a);
 void				next_dot(t_point *dot, t_tab *grid);
 void				find_dot(t_tab *grid, t_point *pos);
+void				prev_dot(t_point *dot, t_tab *grid);
 
 t_tab				*new_tab(size_t size);
 void				t_tab_free(t_tab *tab);
