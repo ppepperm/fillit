@@ -31,18 +31,15 @@ int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point pos)
 {
 	if (node == NULL)
 		return (1);
-	else if (!find_place(grid, node, &(node->pos)))
+	else if (!find_place(grid, node, &pos))
 	{
 		return (0);
 	}
 	else
 	{
-		place_tet(grid,node->pos, node);
+		place_tet(grid, pos, node);
 		print_tab(grid);
 		printf("\n");
-		//find_dot(grid, &pos);
-		//prev_dot(&pos, grid);
-		//printf("%d %d %c\n\n", pos.i, pos.j, node->c);
 		if (!solve(head, grid, node->next, pos))
 		{
 			remove_tet(grid, pos, node);
