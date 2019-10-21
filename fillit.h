@@ -67,19 +67,18 @@ void				print_ban(int *ban);
 
 int					compare(int *a);
 void				next_dot(t_point *dot, t_tab *grid);
-void				find_dot(t_tab *grid, t_point *pos);
-void				prev_dot(t_point *dot, t_tab *grid);
+t_point				find_dot(t_tab *grid);
+int					check_grid(t_tab *grid, t_tet *head);
 
 t_tab				*new_tab(size_t size);
 void				t_tab_free(t_tab *tab);
-void				resize_tab(t_tab **tab, size_t new_size);
 void				print_tab(t_tab *tab);
 
 int					check_place(t_tab *grid, t_point pos, t_tet *node);
 void				place_tet(t_tab *grid, t_point pos, t_tet *tet);
-int					find_place(t_tab *grid, t_tet *node, t_point *point);
-void				remove_tet(t_tab *grid, t_point pos, t_tet *tet);
 
 void				print_tabl(t_tab *tab);
+
+t_tab				*do_solve(t_tet *head,int size);
 
 #endif

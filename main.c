@@ -27,38 +27,44 @@ void	print_ban(int *ban)
 	printf("\n");
 }
 
-int		solve(t_tet *head, t_tab *grid, t_tet *node, t_point pos)
+int			get_size(t_tet *head)
 {
-	if (node == NULL)
-		return (1);
-	else if (!find_place(grid, node, &pos))
+	int		size;
+	int		count;
+
+	size = 0;
+	count = 0;
+	while (head)
 	{
-		return (0);
+		count += 4;
+		head = head->next;
 	}
-	else
+	while (size * size < count)
+		size++;
+	return(size);
+}
+
+t_tab		*fillit(t_tet *head)
+{
+	int		size;
+	t_tab	*grid;
+
+	size = get_size(head);
+	grid = NULL;
+	while (!grid)
 	{
-		place_tet(grid, pos, node);
-		print_tab(grid);
-		printf("\n");
-		if (!solve(head, grid, node->next, pos))
+		if (!(grid = do_solve(head, size)))
+			return (0);
+		ft_putnbr(check_grid(grid, head));
+		if (!check_grid(grid, head))
 		{
-			remove_tet(grid, pos, node);
-			next_dot(&pos, grid);
-			if (!solve(head, grid, node, pos))
-			{
-				remove_tet(grid, node->prev->pos, node->prev);
-				next_dot(&(node->prev->pos), grid);
-				if (!solve(head, grid, node->prev, node->prev->pos)) {
-					//print_tabl(grid);
-					pos.i = 0;
-					pos.j = 0;
-					resize_tab(&grid, grid->size + 1);
-					return (solve(head, grid, head, pos));
-				}
-			}
+			ft_putendl("aaaaaaaaaaa");
+			t_tab_free(grid);
+			grid = NULL;
 		}
-		return (1);
+		size++;
 	}
+	return (grid);
 }
 
 int		main(int ac, char **av)
@@ -66,28 +72,15 @@ int		main(int ac, char **av)
 	int		fd;
 	t_tab	*grid;
 	t_tet	*tmp;
-	t_tet	*freedom;
-	t_point	ban;
 
 	if (ac > 1)
 	{
 		fd = open(av[1], O_RDWR);
 		tmp = read_file(fd);
-		freedom = tmp;
-		ban.j = 0;
-		ban.i = 0;
-		grid = new_tab(4);
 		if (!tmp)
 			ft_putstr("Error\n");
-		while (tmp)
-		{
-			printf("%c ", tmp->c);
-			print_ban(tmp->data);
-			tmp = tmp->next;
-		}
-		solve(freedom, grid, freedom, ban);
-		//t_tab_free(grid);
-		tet_free(&freedom);
+		grid = fillit(tmp);
+		ft_putchar('\n');
 	}
 	else
 		ft_putstr("Error\n");

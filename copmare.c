@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 int		compare_two(int *a, int *b)
 {
@@ -64,32 +65,39 @@ void	next_dot(t_point *dot, t_tab *grid)
 		dot->j++;
 }
 
-void	prev_dot(t_point *dot, t_tab *grid)
-{
-	if (dot->j - 1 < 0)
-	{
-		dot->j = 0;
-		if (dot->i != 0)
-			dot->i--;
-	}
-	else
-		dot->j--;
-}
-
-void find_dot(t_tab *grid, t_point *pos) {
+t_point  find_dot(t_tab *grid) {
 	t_point tmp;
 
 	tmp.i = 0;
 	while (tmp.i < grid->size) {
 		tmp.j = 0;
 		while (tmp.j < grid->size) {
-			if (grid->grid[tmp.i][tmp.j] == '.') {
-				pos->i = tmp.i;
-				pos->j = tmp.j;
-				return;
-			}
+			if (grid->grid[tmp.i][tmp.j] == '.')
+				return tmp;
 			tmp.j++;
 		}
 		tmp.i++;
 	}
+	return tmp;
+}
+
+int		check_grid(t_tab *grid, t_tet *head)
+{
+	t_point tmp;
+
+	while(head->next)
+		head = head->next;
+	tmp.i = 0;
+	while (tmp.i < grid->size)
+	{
+		tmp.j = 0;
+		while(tmp.j < grid->size)
+		{
+			if (grid->grid[tmp.i][tmp.j] == head->c)
+				return (1);
+			tmp.j++;
+		}
+		tmp.i++;
+	}
+	return (0);
 }

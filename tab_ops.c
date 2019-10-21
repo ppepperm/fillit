@@ -51,12 +51,6 @@ void	t_tab_free(t_tab *tab)
 	free(tab);
 }
 
-void	resize_tab(t_tab **tab, size_t new_size)
-{
-	t_tab_free(*tab);
-	*tab = new_tab(new_size);
-}
-
 void	print_tab(t_tab *tab)
 {
 	int i;
