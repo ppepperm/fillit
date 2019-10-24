@@ -149,7 +149,8 @@ t_tet	*read_file(int fd)
 			free(buff);
 			return (NULL);
 		}
-		free(buff);
+		if (buff)
+			free(buff);
 	}
 	if (dot.j < 0)
 	{
