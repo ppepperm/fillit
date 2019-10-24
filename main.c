@@ -55,10 +55,8 @@ t_tab		*fillit(t_tet *head)
 	{
 		if (!(grid = do_solve(head, size)))
 			return (0);
-		ft_putnbr(check_grid(grid, head));
 		if (!check_grid(grid, head))
 		{
-			ft_putendl("aaaaaaaaaaa");
 			t_tab_free(grid);
 			grid = NULL;
 		}
@@ -80,7 +78,9 @@ int		main(int ac, char **av)
 		if (!tmp)
 			ft_putstr("Error\n");
 		grid = fillit(tmp);
-		ft_putchar('\n');
+		print_tab(grid);
+		t_tab_free(grid);
+		tet_free(&tmp);
 	}
 	else
 		ft_putstr("Error\n");

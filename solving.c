@@ -52,10 +52,8 @@ t_tab	*solve(t_tet *node, t_tab *grid, t_point pos)
 		return (grid);
 	if (pass(node, grid, pos))
 	{
-		print_tab(grid);
-		if (check_grid(solve(node->next, grid, find_dot(grid)), node)) {
+		if (check_grid(solve(node->next, grid, find_dot(grid)), node))
 			return (grid);
-		}
 		else
 			grid = reverse(grid, node);
 	}
