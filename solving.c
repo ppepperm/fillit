@@ -33,7 +33,7 @@ t_tab	*reverse(t_tab *grid,t_tet *node)
 		tmp.j = 0;
 		while(tmp.j < grid->size)
 		{
-			if (grid->grid[tmp.i][tmp.j] = node->c)
+			if (grid->grid[tmp.i][tmp.j] == node->c)
 				grid->grid[tmp.i][tmp.j] = '.';
 			tmp.j++;
 		}
@@ -73,6 +73,5 @@ t_tab	*do_solve(t_tet *head,int size)
 	if (!(grid = new_tab(size)))
 		return (NULL);
 	grid = solve(head, grid, point);
-	print_tab(grid);
 	return grid;
 }
