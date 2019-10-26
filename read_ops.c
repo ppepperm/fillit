@@ -81,7 +81,7 @@ int		test_for_symbols(char *str)
 	return (0);
 }
 
-int		check_ine(int ret, char ***s, char *string, int i)
+int		check_line(int ret, char ***s, char *string, int i)
 {
 	if (ret <= 0 && i != 0)
 	{
@@ -113,7 +113,7 @@ int		read_tet(int fd, char ***s)
 			free_tab((void**)*s, i);
 			return (0);
 		}
-		if (check_ine(ret, s, string, i) < 0)
+		if (check_line(ret, s, string, i) < 0)
 			return (-1);
 		(*s)[i] = string;
 	}
@@ -130,6 +130,7 @@ t_tet	*read_file(int fd)
 
 	dot.i = -1;
 	head = NULL;
+	buff = NULL;
 	while (++dot.i < 26 && (dot.j = read_tet(fd, &tmp)) > 0)
 	{
 		if (!(node = tet_new(digitalize(tmp), 'A' + dot.i)))
@@ -147,9 +148,14 @@ t_tet	*read_file(int fd)
 		{
 			tet_free(&head);
 			free(buff);
+			buff = NULL;
 			return (NULL);
 		}
-		free(buff);
+		if (buff)
+		{
+			free(buff);
+			buff = NULL;
+		}
 	}
 	if (dot.j < 0)
 	{

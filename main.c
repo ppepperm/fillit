@@ -81,7 +81,7 @@ int		main(int ac, char **av)
 			return (0);
 		}
 		grid = fillit(tmp);
-		print_tab(grid);
+		print_tabl(grid);
 		t_tab_free(grid);
 		tet_free(&tmp);
 	}

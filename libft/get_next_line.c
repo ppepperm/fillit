@@ -35,12 +35,6 @@ static int	line_ret(char **line, char **descr, const int fd)
 	return (1);
 }
 
-static int return_zero(char **line)
-{
-	*line = ft_strnew(0);
-	return (0);
-}
-
 int			get_next_line(const int fd, char **line)
 {
 	static char *descr[10240];
@@ -66,6 +60,6 @@ int			get_next_line(const int fd, char **line)
 		descr[fd] = tmp;
 	}
 	else
-		return (return_zero(line));
+		return (0);
 	return (1);
 }
