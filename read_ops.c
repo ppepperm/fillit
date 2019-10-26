@@ -126,6 +126,12 @@ void	free_null(char **buff)
 	*buff = NULL;
 }
 
+t_tet	*free_tet_null(t_tet **head)
+{
+	tet_free(head);
+	return (NULL);
+}
+
 t_tet	*read_file(int fd)
 {
 	t_tet	*head;
@@ -140,29 +146,19 @@ t_tet	*read_file(int fd)
 	while (++dot.i < 26 && (dot.j = read_tet(fd, &tmp)) > 0)
 	{
 		if (!(node = tet_new(digitalize(tmp), 'A' + dot.i)))
-		{
-			tet_free(&head);
-			return (NULL);
-		}
+			return (free_tet_null(&head));
 		tet_push_back(&head, node);
 		if (compare(node->data) == 0)
-		{
-			tet_free(&head);
-			return (NULL);
-		}
+			return (free_tet_null(&head));
 		if (get_next_line(fd, &buff) == -1 || ft_strlen(buff) > 0)
 		{
-			tet_free(&head);
 			free_null(&buff);
-			return (NULL);
+			return (free_tet_null(&head));
 		}
 		if (buff)
 			free_null(&buff);
 	}
 	if (dot.j < 0)
-	{
-		tet_free(&head);
-		return (NULL);
-	}
+		return (free_tet_null(&head));
 	return (head);
 }
