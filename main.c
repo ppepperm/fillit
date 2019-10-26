@@ -76,7 +76,10 @@ int		main(int ac, char **av)
 		fd = open(av[1], O_RDWR);
 		tmp = read_file(fd);
 		if (!tmp)
+		{
 			ft_putstr("Error\n");
+			return (0);
+		}
 		grid = fillit(tmp);
 		print_tab(grid);
 		t_tab_free(grid);
