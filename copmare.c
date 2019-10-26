@@ -13,9 +13,9 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int		compare_two(int *a, int *b)
+int			compare_two(int *a, int *b)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < 8)
@@ -27,9 +27,9 @@ int		compare_two(int *a, int *b)
 	return (1);
 }
 
-int		compare(int *a)
+int			compare(int *a)
 {
-	int ret;
+	int		ret;
 
 	ret = 0;
 	ret = ret || compare_two(a, I_PIECE);
@@ -54,7 +54,7 @@ int		compare(int *a)
 	return (ret);
 }
 
-void	next_dot(t_point *dot, t_tab *grid)
+void		next_dot(t_point *dot, t_tab *grid)
 {
 	if (dot->j + 1 == grid->size)
 	{
@@ -65,33 +65,36 @@ void	next_dot(t_point *dot, t_tab *grid)
 		dot->j++;
 }
 
-t_point  find_dot(t_tab *grid) {
-	t_point tmp;
+t_point		find_dot(t_tab *grid)
+{
+	t_point	tmp;
 
 	tmp.i = 0;
-	while (tmp.i < grid->size) {
+	while (tmp.i < grid->size)
+	{
 		tmp.j = 0;
-		while (tmp.j < grid->size) {
+		while (tmp.j < grid->size)
+		{
 			if (grid->grid[tmp.i][tmp.j] == '.')
-				return tmp;
+				return (tmp);
 			tmp.j++;
 		}
 		tmp.i++;
 	}
-	return tmp;
+	return (tmp);
 }
 
-int		check_grid(t_tab *grid, t_tet *head)
+int			check_grid(t_tab *grid, t_tet *head)
 {
-	t_point tmp;
+	t_point	tmp;
 
-	while(head->next)
+	while (head->next)
 		head = head->next;
 	tmp.i = 0;
 	while (tmp.i < grid->size)
 	{
 		tmp.j = 0;
-		while(tmp.j < grid->size)
+		while (tmp.j < grid->size)
 		{
 			if (grid->grid[tmp.i][tmp.j] == head->c)
 				return (1);

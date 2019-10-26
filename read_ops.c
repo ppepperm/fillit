@@ -120,6 +120,12 @@ int		read_tet(int fd, char ***s)
 	return (1);
 }
 
+void	free_null(char **buff)
+{
+	free(*buff);
+	*buff = NULL;
+}
+
 t_tet	*read_file(int fd)
 {
 	t_tet	*head;
@@ -147,15 +153,11 @@ t_tet	*read_file(int fd)
 		if (get_next_line(fd, &buff) == -1 || ft_strlen(buff) > 0)
 		{
 			tet_free(&head);
-			free(buff);
-			buff = NULL;
+			free_null(&buff);
 			return (NULL);
 		}
 		if (buff)
-		{
-			free(buff);
-			buff = NULL;
-		}
+			free_null(&buff);
 	}
 	if (dot.j < 0)
 	{

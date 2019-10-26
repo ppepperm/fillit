@@ -15,18 +15,6 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-void	print_ban(int *ban)
-{
-	int bann = 0;
-
-	while (bann < 8)
-	{
-		printf("%d ", ban[bann]);
-		bann++;
-	}
-	printf("\n");
-}
-
 int			get_size(t_tet *head)
 {
 	int		size;
@@ -41,7 +29,7 @@ int			get_size(t_tet *head)
 	}
 	while (size * size < count)
 		size++;
-	return(size);
+	return (size);
 }
 
 t_tab		*fillit(t_tet *head)
@@ -65,7 +53,7 @@ t_tab		*fillit(t_tet *head)
 	return (grid);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	int		fd;
 	t_tab	*grid;
@@ -81,7 +69,7 @@ int		main(int ac, char **av)
 			return (0);
 		}
 		grid = fillit(tmp);
-		print_tabl(grid);
+		print_tab(grid);
 		t_tab_free(grid);
 		tet_free(&tmp);
 	}

@@ -52,7 +52,7 @@ typedef struct		s_tetrm
 {
 	int				*data;
 	char			c;
-	struct	s_tetrm	*next;
+	struct s_tetrm	*next;
 }					t_tet;
 
 t_tet				*tet_new(int *data, char c);
@@ -61,7 +61,6 @@ void				tet_free(t_tet **begin_list);
 void				free_tab(void **tab, size_t h);
 
 t_tet				*read_file(int fd);
-void				print_ban(int *ban);
 
 int					compare(int *a);
 void				next_dot(t_point *dot, t_tab *grid);
@@ -77,6 +76,6 @@ void				place_tet(t_tab *grid, t_point pos, t_tet *tet);
 
 void				print_tabl(t_tab *tab);
 
-t_tab				*do_solve(t_tet *head,int size);
+t_tab				*do_solve(t_tet *head, int size);
 
 #endif
