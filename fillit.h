@@ -52,9 +52,7 @@ typedef struct		s_tetrm
 {
 	int				*data;
 	char			c;
-	t_point			pos;
 	struct	s_tetrm	*next;
-	struct  s_tetrm	*prev;
 }					t_tet;
 
 t_tet				*tet_new(int *data, char c);

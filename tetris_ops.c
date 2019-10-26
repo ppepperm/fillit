@@ -44,6 +44,4 @@ void	place_tet(t_tab *grid, t_point pos, t_tet *tet)
 	grid->grid[pos.i + tet->data[3]][pos.j + tet->data[2]] = tet->c;
 	grid->grid[pos.i + tet->data[5]][pos.j + tet->data[4]] = tet->c;
 	grid->grid[pos.i + tet->data[7]][pos.j + tet->data[6]] = tet->c;
-	tet->pos.i = pos.i;
-	tet->pos.j = pos.j;
 }

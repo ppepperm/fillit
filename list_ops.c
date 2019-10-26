@@ -24,10 +24,7 @@ t_tet	*tet_new(int *data, char c)
 	}
 	tmp->data = data;
 	tmp->c = c;
-	tmp->prev = tmp;
 	tmp->next = NULL;
-	tmp->pos.i = 0;
-	tmp->pos.j = 0;
 	return (tmp);
 }
 
@@ -43,7 +40,6 @@ void	tet_push_back(t_tet **head, t_tet *new)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
-		new->prev = tmp;
 	}
 }
 
