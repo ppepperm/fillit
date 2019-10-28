@@ -59,6 +59,7 @@ t_tet				*tet_new(int *data, char c);
 void				tet_push_back(t_tet **head, t_tet *new);
 void				tet_free(t_tet **begin_list);
 void				free_tab(void **tab, size_t h);
+int					free_all(char **a, size_t i, void *b);
 
 t_tet				*read_file(int fd);
 
@@ -66,6 +67,8 @@ int					compare(int *a);
 void				next_dot(t_point *dot, t_tab *grid);
 t_point				find_dot(t_tab *grid);
 int					check_grid(t_tab *grid, t_tet *head);
+int					set_data(char **tab, int *data,
+		int *error_count, t_point *min);
 
 t_tab				*new_tab(size_t size);
 void				t_tab_free(t_tab *tab);
@@ -73,6 +76,8 @@ void				print_tab(t_tab *tab);
 
 int					check_place(t_tab *grid, t_point pos, t_tet *node);
 void				place_tet(t_tab *grid, t_point pos, t_tet *tet);
+void				free_null(char **buff);
+t_tet				*free_tet_null(t_tet **head, char **buff);
 
 void				print_tabl(t_tab *tab);
 

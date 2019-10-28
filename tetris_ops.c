@@ -45,3 +45,17 @@ void	place_tet(t_tab *grid, t_point pos, t_tet *tet)
 	grid->grid[pos.i + tet->data[5]][pos.j + tet->data[4]] = tet->c;
 	grid->grid[pos.i + tet->data[7]][pos.j + tet->data[6]] = tet->c;
 }
+
+void	free_null(char **buff)
+{
+	free(*buff);
+	*buff = NULL;
+}
+
+t_tet	*free_tet_null(t_tet **head, char **buff)
+{
+	if (*buff)
+		free_null(buff);
+	tet_free(head);
+	return (NULL);
+}

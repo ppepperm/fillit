@@ -23,15 +23,15 @@ int		pass(t_tet *node, t_tab *grid, t_point pos)
 	return (1);
 }
 
-t_tab	*reverse(t_tab *grid,t_tet *node)
+t_tab	*reverse(t_tab *grid, t_tet *node)
 {
 	t_point tmp;
 
 	tmp.i = 0;
-	while(tmp.i < grid->size)
+	while (tmp.i < grid->size)
 	{
 		tmp.j = 0;
-		while(tmp.j < grid->size)
+		while (tmp.j < grid->size)
 		{
 			if (grid->grid[tmp.i][tmp.j] == node->c)
 				grid->grid[tmp.i][tmp.j] = '.';
@@ -48,7 +48,7 @@ t_tab	*solve(t_tet *node, t_tab *grid, t_point pos)
 
 	tmp.i = pos.i;
 	tmp.j = pos.j;
-	if(!node || (tmp.i + 1 == grid->size && tmp.j + 1 == grid->size))
+	if (!node || (tmp.i + 1 == grid->size && tmp.j + 1 == grid->size))
 		return (grid);
 	if (pass(node, grid, pos))
 	{
@@ -61,7 +61,7 @@ t_tab	*solve(t_tet *node, t_tab *grid, t_point pos)
 	return (solve(node, grid, tmp));
 }
 
-t_tab	*do_solve(t_tet *head,int size)
+t_tab	*do_solve(t_tet *head, int size)
 {
 	t_point point;
 	t_tab	*grid;
@@ -71,5 +71,5 @@ t_tab	*do_solve(t_tet *head,int size)
 	if (!(grid = new_tab(size)))
 		return (NULL);
 	grid = solve(head, grid, point);
-	return grid;
+	return (grid);
 }

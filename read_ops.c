@@ -17,49 +17,20 @@ int		*digitalize(char **tab)
 {
 	int		*data;
 	int		k;
-	t_point	dot;
-	t_point	min;
 	int		error_count;
+	t_point	min;
 
-	dot.i = -1;
+	error_count = 0;
 	min.i = 4;
 	min.j = 4;
-	k = 0;
-	error_count = 0;
 	if (!(data = (int*)malloc(sizeof(int) * 8)))
 		return (NULL);
 	ft_bzero((void*)data, 8);
-	while (++dot.i < 4)
-	{
-		dot.j = -1;
-		while (++dot.j < 4)
-		{
-			if (tab[dot.i][dot.j] == '#')
-			{
-				error_count++;
-				if (error_count > 4)
-				{
-					free(data);
-					free_tab((void**)tab, 4);
-					return (NULL);
-				}
-				if (dot.i < min.i)
-					min.i = dot.i;
-				if (dot.j < min.j)
-					min.j = dot.j;
-				data[k] = dot.j;
-				data[k + 1] = dot.i;
-				k += 2;
-			}
-		}
-	}
+	if (!set_data(tab, data, &error_count, &min))
+		return (NULL);
 	k = 0;
 	if (error_count != 4)
-	{
-		free(data);
-		free_tab((void**)tab, 4);
-		return (NULL);
-	}
+		return (free_all(tab, 4, data));
 	while (k < 8)
 	{
 		data[k] -= min.j;
@@ -88,9 +59,10 @@ int		check_line(int ret, char ***s, char *string, int i)
 		free_tab((void**)*s, i);
 		return (-1);
 	}
-	if (ft_strlen(string) > 4 || test_for_symbols(string))
+	if (ft_strlen(string) != 4 || test_for_symbols(string))
 	{
-		free_tab((void**)*s, i + 1);
+		free(string);
+		free_tab((void**)*s, i);
 		return (-1);
 	}
 	return (1);
@@ -120,18 +92,6 @@ int		read_tet(int fd, char ***s)
 	return (1);
 }
 
-void	free_null(char **buff)
-{
-	free(*buff);
-	*buff = NULL;
-}
-
-t_tet	*free_tet_null(t_tet **head)
-{
-	tet_free(head);
-	return (NULL);
-}
-
 t_tet	*read_file(int fd)
 {
 	t_tet	*head;
@@ -146,19 +106,16 @@ t_tet	*read_file(int fd)
 	while (++dot.i < 26 && (dot.j = read_tet(fd, &tmp)) > 0)
 	{
 		if (!(node = tet_new(digitalize(tmp), 'A' + dot.i)))
-			return (free_tet_null(&head));
+			return (free_tet_null(&head, &buff));
 		tet_push_back(&head, node);
 		if (compare(node->data) == 0)
-			return (free_tet_null(&head));
+			return (free_tet_null(&head, &buff));
 		if (get_next_line(fd, &buff) == -1 || ft_strlen(buff) > 0)
-		{
-			free_null(&buff);
-			return (free_tet_null(&head));
-		}
+			return (free_tet_null(&head, &buff));
 		if (buff)
 			free_null(&buff);
 	}
 	if (dot.j < 0)
-		return (free_tet_null(&head));
+		return (free_tet_null(&head, &buff));
 	return (head);
 }
