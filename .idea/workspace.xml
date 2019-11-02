@@ -8,14 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aad4027e-d3b9-42de-b967-d1a022a962c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fillit" beforeDir="false" afterPath="$PROJECT_DIR$/fillit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fillit.dSYM/Contents/Resources/DWARF/fillit" beforeDir="false" afterPath="$PROJECT_DIR$/fillit.dSYM/Contents/Resources/DWARF/fillit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fillit.h" beforeDir="false" afterPath="$PROJECT_DIR$/fillit.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input" beforeDir="false" afterPath="$PROJECT_DIR$/input" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft/libft.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_ops.c" beforeDir="false" afterPath="$PROJECT_DIR$/read_ops.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/solving.c" beforeDir="false" afterPath="$PROJECT_DIR$/solving.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tab_ops.c" beforeDir="false" afterPath="$PROJECT_DIR$/tab_ops.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetris_ops.c" beforeDir="false" afterPath="$PROJECT_DIR$/tetris_ops.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +61,8 @@
       <updated>1572094480600</updated>
       <workItem from="1572094487072" duration="4193000" />
       <workItem from="1572099162813" duration="936000" />
-      <workItem from="1572264494798" duration="4098000" />
+      <workItem from="1572264494798" duration="4490000" />
+      <workItem from="1572269415249" duration="566000" />
     </task>
     <servers />
   </component>

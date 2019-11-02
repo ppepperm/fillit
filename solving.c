@@ -46,6 +46,7 @@ t_tab	*solve(t_tet *node, t_tab *grid, t_point pos)
 {
 	t_point tmp;
 
+	printf("%d %d\n", pos.i, pos.j);
 	tmp.i = pos.i;
 	tmp.j = pos.j;
 	if (!node || (tmp.i + 1 == grid->size && tmp.j + 1 == grid->size))
