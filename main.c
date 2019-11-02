@@ -15,6 +15,12 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+int			error_print (void)
+{
+	ft_putstr("error\n");
+	return (0);
+}
+
 int			get_size(t_tet *head)
 {
 	int		size;
@@ -64,10 +70,7 @@ int			main(int ac, char **av)
 		fd = open(av[1], O_RDWR);
 		tmp = read_file(fd);
 		if (!tmp)
-		{
-			ft_putstr("error\n");
-			return (0);
-		}
+			return (error_print());
 		grid = fillit(tmp);
 		print_tab(grid);
 		t_tab_free(grid);
