@@ -82,13 +82,13 @@ int		set_data(char **tab, int *data, int *error_count, t_point *min)
 		{
 			if (tab[dot.i][dot.j] == '#')
 			{
-				(*error_count)++;
-				if (*error_count > 4)
+				if (++(*error_count) > 4)
 					return (free_all(tab, 4, data));
-				if (dot.i < min->i)
+				if (*error_count < 2)
+				{
 					min->i = dot.i;
-				if (dot.j < min->j)
 					min->j = dot.j;
+				}
 				data[k++] = dot.j;
 				data[k++] = dot.i;
 			}

@@ -65,7 +65,7 @@ int			main(int ac, char **av)
 		tmp = read_file(fd);
 		if (!tmp)
 		{
-			ft_putstr("Error\n");
+			ft_putstr("error\n");
 			return (0);
 		}
 		grid = fillit(tmp);
@@ -74,6 +74,6 @@ int			main(int ac, char **av)
 		tet_free(&tmp);
 	}
 	else
-		ft_putstr("Error\n");
+		ft_putstr("error\n");
 	return (0);
 }

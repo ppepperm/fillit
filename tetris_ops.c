@@ -13,27 +13,28 @@
 #include "fillit.h"
 #include "stdio.h"
 
-int		check_place(t_tab *grid, t_point pos, t_tet *node)
+int		check(t_tab *grid, t_point pos, t_tet *node, int i)
 {
 	int *data;
-	int ret;
 
 	data = node->data;
-	if (!(pos.i + data[1] < grid->size && pos.j + data[0] < grid->size))
+	if (!(pos.i + data[i + 1] < grid->size && pos.j + data[i] < grid->size) \
+	|| pos.i + data[i + 1] < 0 || pos.j + data[i] < 0)
 		return (0);
-	else if (grid->grid[pos.i + data[1]][pos.j + data[0]] != '.')
+	else if (grid->grid[pos.i + data[i + 1]][pos.j + data[i]] != '.')
 		return (0);
-	if (!(pos.i + data[3] < grid->size && pos.j + data[2] < grid->size))
+	return (1);
+}
+
+int		check_place(t_tab *grid, t_point pos, t_tet *node)
+{
+	if (!check(grid, pos, node, 0))
 		return (0);
-	else if (grid->grid[pos.i + data[3]][pos.j + data[2]] != '.')
+	if (!check(grid, pos, node, 2))
 		return (0);
-	if (!(pos.i + data[5] < grid->size && pos.j + data[4] < grid->size))
+	if (!check(grid, pos, node, 4))
 		return (0);
-	else if (grid->grid[pos.i + data[5]][pos.j + data[4]] != '.')
-		return (0);
-	if (!(pos.i + data[7] < grid->size && pos.j + data[6] < grid->size))
-		return (0);
-	else if (grid->grid[pos.i + data[7]][pos.j + data[6]] != '.')
+	if (!check(grid, pos, node, 6))
 		return (0);
 	return (1);
 }
