@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-int			error_print (void)
+int			error_print(void)
 {
 	ft_putstr("error\n");
 	return (0);
@@ -59,6 +59,32 @@ t_tab		*fillit(t_tet *head)
 	return (grid);
 }
 
+int			check_endl(int fd, t_tet *head)
+{
+	int		t_count;
+	int		n_count;
+	char	buff[256];
+	int		i;
+
+	ft_bzero(buff, 256);
+	read(fd, buff, 255);
+	t_count = 0;
+	n_count = 0;
+	i = 0;
+	while (buff[i])
+	{
+		if (buff[i] == '\n')
+			n_count++;
+		i++;
+	}
+	while (head)
+	{
+		t_count++;
+		head = head->next;
+	}
+	return (n_count == t_count * 4 + t_count - 2);
+}
+
 int			main(int ac, char **av)
 {
 	int		fd;
@@ -71,6 +97,13 @@ int			main(int ac, char **av)
 		tmp = read_file(fd);
 		if (!tmp)
 			return (error_print());
+		close(fd);
+		fd = open(av[1], O_RDWR);
+		if (!check_endl(fd, tmp))
+		{
+			tet_free(&tmp);
+			return (error_print());
+		}
 		grid = fillit(tmp);
 		print_tab(grid);
 		t_tab_free(grid);
