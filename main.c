@@ -82,7 +82,7 @@ int			check_endl(int fd, t_tet *head)
 		t_count++;
 		head = head->next;
 	}
-	return (n_count == t_count * 4 + t_count - 2);
+	return (n_count == t_count * 4 + t_count - 1);
 }
 
 int			main(int ac, char **av)
