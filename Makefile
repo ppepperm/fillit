@@ -13,7 +13,7 @@
 NAME= fillit
 SRC := main.c list_ops.c read_ops.c copmare.c tab_ops.c tetris_ops.c print.c solving.c
 OBJ := $(patsubst %.c, %.o, $(SRC))
-
+CFLAGS := -Wall -Wextra -Werror
 LIB_FLAG := -L libft/ -lft
 
 all: $(NAME)
@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@make -C libft
-		@gcc -o $(NAME) -Wall -Wextra -Werror $(OBJ) $(LIB_FLAG)
+		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LIB_FLAG)
 		@echo "DONE"
 
 clean:
