@@ -30,7 +30,7 @@ int		*digitalize(char **tab)
 		return (NULL);
 	k = 0;
 	if (error_count != 4)
-		return (free_all(tab, 4, data));
+		return (free_all_ret(tab, 4, data));
 	while (k < 8)
 	{
 		data[k] -= min.j;

@@ -80,6 +80,7 @@ void				free_null(char **buff);
 t_tet				*free_tet_null(t_tet **head, char **buff);
 
 void				print_tabl(t_tab *tab);
+int					*free_all_ret(char **tab, int a, int *data);
 
 t_tab				*do_solve(t_tet *head, int size);
 

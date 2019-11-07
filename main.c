@@ -63,11 +63,11 @@ int			check_endl(int fd, t_tet *head)
 {
 	int		t_count;
 	int		n_count;
-	char	buff[256];
+	char	buff[1024];
 	int		i;
 
-	ft_bzero(buff, 256);
-	read(fd, buff, 255);
+	ft_bzero(buff, 1024);
+	read(fd, buff, 1023);
 	t_count = 0;
 	n_count = 0;
 	i = 0;
@@ -91,9 +91,8 @@ int			main(int ac, char **av)
 	t_tab	*grid;
 	t_tet	*tmp;
 
-	if (ac > 1)
+	if (ac > 1 && (fd = open(av[1], O_RDWR)) > 0)
 	{
-		fd = open(av[1], O_RDWR);
 		tmp = read_file(fd);
 		if (!tmp)
 			return (error_print());
