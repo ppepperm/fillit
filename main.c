@@ -91,7 +91,7 @@ int			main(int ac, char **av)
 	t_tab	*grid;
 	t_tet	*tmp;
 
-	if (ac > 1 && (fd = open(av[1], O_RDWR)) > 0)
+	if (ac == 2 && (fd = open(av[1], O_RDWR)) > 0)
 	{
 		tmp = read_file(fd);
 		if (!tmp)
