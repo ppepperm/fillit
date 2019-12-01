@@ -108,7 +108,8 @@ int			main(int ac, char **av)
 		t_tab_free(grid);
 		tet_free(&tmp);
 	}
+	else if (ac != 2)
+		ft_putstr("usage: ./fillit input_file\n");
 	else
-		ft_putstr("error\n");
-	return (0);
+		return (error_print());
 }

@@ -54,7 +54,7 @@ void		print_tabl(t_tab *tab)
 	ft_putstr(EOC);
 }
 
-int 		*free_all_ret(char **tab, int a, int *data)
+int			*free_all_ret(char **tab, int a, int *data)
 {
 	free_all(tab, a, data);
 	return (NULL);
